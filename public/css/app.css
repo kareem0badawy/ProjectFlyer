@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  padding: 70px;
 }
 article,
 aside,
@@ -1187,7 +1188,7 @@ h6,
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
-  color: #ffffff;
+  color: #000;
 }
 h1 small,
 h2 small,
@@ -2551,7 +2552,7 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 39px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
