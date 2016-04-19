@@ -1,14 +1,28 @@
 <?php
-
 namespace App\Http\Controllers;
+
+use App\Flyer;
+
+use App\Photo;
 
 use Illuminate\Http\Request;
 
+//use Illuminate\Database\Query\Builder;
+
+
 use App\Http\Requests\FlyerRequest;
+
 use App\Http\Controllers\Controller;
+
+
 
 class FlyerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +52,9 @@ class FlyerController extends Controller
     public function store(FlyerRequest $request)
     {
        // $this->validate();
-        App\Http\Flyer::create($request->all());
-
-        flash( 'Flyer Successfully created!');
+        Flyer::create($request->all());
+        
+        //flash( 'Flyer Successfully created!');
         
 
         return redirect()->back();
@@ -52,9 +66,37 @@ class FlyerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($zip,$street)
     {
-        //
+        $flyer = Flyer::locatedAt($zip,$street);
+
+        return view('flyers.show', compact('flyer'));
+    }
+
+     /**
+     *  Apply a photo to the referenced flyer .
+     *   
+     * @param   string   $zip      
+     * @param   string   $street   
+     * @param   Request  $request            
+     */
+    public function addPhoto($zip,$street,Request $request)
+    {
+        $this->validate($request,[
+            'photo' => 'required|mimes:jpg,png,bmp'
+             ]);
+        
+       $photo = Photo::fromForm($request->file('photo'));
+
+
+        Flyer::locatedAt($zip,$street)->addPhoto($photo);
+
+
+
+       // $flyer->photos()->create(['path' => "/flyers/photos/{$name}"]);
+
+        //$flyer = photos()->create(['path' => "/flyers/photos/{$name}"]);
+
     }
 
     /**

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
 	<title>Project Flyer</title>
-      <link rel="stylesheet" href="/css/libs.css">
+      <!--link rel="stylesheet" href="/css/libs.css"-->
       <link rel="stylesheet" href="/css/app.css">
-
+      <link rel="stylesheet" href="/css/dropzone.css">
 
 </head>
 <body>
@@ -35,8 +35,10 @@
 			@yield('content')
 		</div>
 
-    <script src="/js/libs.js"></script>
-    <script type="text/javascript">
+ 
+
+   <!--script src="/js/libs.js"></script-->
+    <script>
       
       swal({
          title: "Error!",
@@ -45,14 +47,10 @@
          confirmButtonText: "Cool"
 
           });
-
-swal({   
-    title: "Auto close alert!",
-    text: "I will close in 2 seconds.",
-    timer: 2000,
-    showConfirmButton: false 
-  });
+    
     </script>
+
+    @yield('scripts.footer')
 
 
 </body>

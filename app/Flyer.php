@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class Flyer extends Model
 {
@@ -19,12 +21,38 @@ class Flyer extends Model
         'city',       
         'zip' ,       
         'state',      
-        'country',    
+        'country',     
         'price',      
         'description'
     ];
 
+     /**
+     *  Find the flyer at the given address.
+     *
+     * @param   Builder  $query    
+     * @param   string   $zip      
+     * @param   string   $street   
+     * @return  Builder            
+     */
 
+    public static function locatedAt($zip,$street)
+    {
+       
+         $street = str_replace('-', ' ', $street );
+
+         return static::where(compact('zip','street'))->first();
+    }
+
+    public function getPriceAttribute($price)
+    {
+       
+         return '$ ' . number_format($price);
+    }
+
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
+    }
 	 /**
      * A Flyer is composed of many photos
      *
