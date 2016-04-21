@@ -20,7 +20,7 @@ elixir(function(mix) {
 
     	], './public/js/libs.js')
 
-    .style([
+    .styles([
     		'libs/sweetalert.css'
     	], './public/css/libs.css');
 });

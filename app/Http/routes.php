@@ -19,4 +19,4 @@ Route::resource('flyers','FlyerController');
 
 Route::get('{zip}/{street}','FlyerController@show');
 
-Route::post('{zip}/{street}/photos','FlyerController@addPhoto');
+Route::post('{zip}/{street}/photos' , ['as' => 'store_photo_path','uses' =>'FlyerController@addPhoto']);

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File;
+
 
 
 class Photo extends Model
@@ -14,8 +16,6 @@ class Photo extends Model
 	protected $fillable=['path'];
 	
 	protected $baseDir = 'flyers/photos';
-
-	//protected $photo->fileName();
 
     public function flyer()
     {
@@ -30,7 +30,7 @@ class Photo extends Model
 
         $photo->path = $photo->baseDir . '/' . $name;
 
-        $file->move($photos->baseDir, $name);	//Question
+        $file->move($photo->baseDir, $name);	//Question
 
         return $photo;	
 

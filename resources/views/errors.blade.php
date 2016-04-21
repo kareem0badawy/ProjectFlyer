@@ -10,6 +10,5 @@
 
 		</ul>
 
-	</div>
-
+	</div>	
 @endif

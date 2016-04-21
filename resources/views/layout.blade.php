@@ -6,10 +6,13 @@
       <!--link rel="stylesheet" href="/css/libs.css"-->
       <link rel="stylesheet" href="/css/app.css">
       <link rel="stylesheet" href="/css/dropzone.css">
+      <link rel="stylesheet" href="/css/libs.css">
 
 </head>
 <body>
 
+
+  
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -37,19 +40,10 @@
 
  
 
-   <!--script src="/js/libs.js"></script-->
-    <script>
-      
-      swal({
-         title: "Error!",
-         text: "Here's my error message!",
-         type: "error",
-         confirmButtonText: "Cool"
+   <script src="/js/libs.js"></script>
 
-          });
+    @include('flash')
     
-    </script>
-
     @yield('scripts.footer')
 
 

@@ -29,7 +29,6 @@ class Flyer extends Model
      /**
      *  Find the flyer at the given address.
      *
-     * @param   Builder  $query    
      * @param   string   $zip      
      * @param   string   $street   
      * @return  Builder            

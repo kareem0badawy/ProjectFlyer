@@ -40,6 +40,7 @@ class FlyerController extends Controller
      */
     public function create()
     {
+        flash('Hello World...!');
         return view('flyers.create');
     }
 
@@ -54,7 +55,8 @@ class FlyerController extends Controller
        // $this->validate();
         Flyer::create($request->all());
         
-        //flash( 'Flyer Successfully created!');
+
+        flash( 'Flyer Successfully created!');
         
 
         return redirect()->back();
@@ -80,23 +82,21 @@ class FlyerController extends Controller
      * @param   string   $street   
      * @param   Request  $request            
      */
+ 
     public function addPhoto($zip,$street,Request $request)
     {
-        $this->validate($request,[
-            'photo' => 'required|mimes:jpg,png,bmp'
-             ]);
         
-       $photo = Photo::fromForm($request->file('photo'));
-
+     $this->validate($request,[
+        'photo' => 'required|mimes:jpg,jpeg,png,bmp'
+         ]);
+        
+         $photo = Photo::fromForm($request->file('photo'));
 
         Flyer::locatedAt($zip,$street)->addPhoto($photo);
-
-
-
-       // $flyer->photos()->create(['path' => "/flyers/photos/{$name}"]);
-
-        //$flyer = photos()->create(['path' => "/flyers/photos/{$name}"]);
-
+        
+        return 'Done';
+        
+       // $flyer = photos()->create(['path' => "/flyers/photos/{$name}"]);
     }
 
     /**

@@ -18,7 +18,7 @@
 
 		@foreach($flyer->photos as $photo)
 
-			<img src="{{ $photo->path }}" alt="">
+			<img src="{{ asset($photo->path) }}" alt="">
 
 		@endforeach	
 
@@ -31,7 +31,7 @@
 
 	<h2>Add Your Photos</h2>
 
-	<form id="addPhotosForm" action="/{{$flyer->zip}}/{{$flyer->street}}/photos" method="POST" class="dropzone">
+	<form id="addPhotosForm" action="{{route('store_photo_path', [$flyer->zip,$flyer->street])}}" method="POST" class="dropzone">
 		
 		{!! csrf_field() !!}
 	</form>
@@ -41,7 +41,7 @@
 
 @section('scripts.footer')
 
-	<script type="text/javascript" src="/js/dropzone.js"></script>
+	<script src="/js/dropzone.js"></script>
 
 	<script>
 		
