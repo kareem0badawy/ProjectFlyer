@@ -3,9 +3,9 @@
     <script>
       
       swal({
-         title: "info!",
-         text: "Here's my error message!",
-         type: "info",
+         title: "{{ session('flash_message.title') }}",
+         text: "{{ session('flash_message.message') }}",
+         type: "success",
          timer: 2000,
          showConfirmButton: false,
 

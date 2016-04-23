@@ -4,7 +4,7 @@
 
 <div class="col-md-6">
 
-{!!csrf_field()!!}
+{{ csrf_field() }}
 
 
 		<div class="form-group">

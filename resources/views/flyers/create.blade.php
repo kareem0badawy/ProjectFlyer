@@ -9,7 +9,7 @@
 
 		<hr>
 
-<form method="POST" action="/flyers" enctype="mulitpart/form-data">
+<form method="POST" action="/flyers	" enctype="mulitpart/form-data">
 			
 		@include('flyers.form')
 
